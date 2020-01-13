@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?aq1mk4');
+  src: url('../fonts/icomoon.eot?aq1mk4#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?aq1mk4') format('truetype'),
+    url('../fonts/icomoon.woff?aq1mk4') format('woff'),
+    url('../fonts/icomoon.svg?aq1mk4#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play_circle_outline:before {
+  content: "\e900";
+}
+
+.icon-forumquestion_answer:before {
+  content: "\e90c";
+}
+
+.icon-keyboard_arrow_down:before {
+  content: "\e901";
+}
+
+.icon-keyboard_arrow_left:before {
+  content: "\e902";
+}
+
+.icon-keyboard_arrow_right:before {
+  content: "\e903";
+}
+
+.icon-keyboard_arrow_up:before {
+  content: "\e904";
+}
+
+.icon-local_grocery_storeshopping_cart:before {
+  content: "\e905";
+}
+
+.icon-arrow_forward:before {
+  content: "\e906";
+}
+
+.icon-more_vert:before {
+  content: "\e907";
+}
+
+.icon-account_circle:before {
+  content: "\e908";
+}
+
+.icon-favorite_outline:before {
+  content: "\e909";
+}
+
+.icon-language:before {
+  content: "\e90a";
+}
+
+.icon-search:before {
+  content: "\e90b";
+}
+
+.icon-twitter:before {
+  content: "\f099";
+}
+
+.icon-facebook:before {
+  content: "\f09a";
+}
+
+.icon-facebook-f:before {
+  content: "\f09a";
+}
+
+.icon-google-plus:before {
+  content: "\f0d5";
+}
+
+.icon-instagram:before {
+  content: "\f16d";
+}
+
+.icon-dribbble:before {
+  content: "\f17d";
+}
+
+.icon-vk:before {
+  content: "\f189";
+}
+
+.icon-behance:before {
+  content: "\f1b4";
+}
+
+.icon-pinterest-p:before {
+  content: "\f231";
+}

@@ -1,0 +1,55 @@
+@mixin mqd($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin mqm($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+// ============================================================================================================
+// Vars
+
+$var: (
+  es: 12px,
+  s: 14px,
+  m: 16px,
+  l: 18px,
+  xl: 24px,
+  xxl: 28px,
+  xxx: 42px,
+  text1: #fff,
+  text2: #000,
+  text3: #707070,
+  text4: #cfcfcf,
+  text5: #3f51b5,
+  bg: #fff,
+  bg-main: #f5f5f5,
+  bg-header: #191919,
+  bg-footer1: #212121,
+  bg-footer2: #303030,
+  bg-button1: #3f51b5,
+  bg-button2: #ff4081,
+  border1: #5c5c5b,
+  border2: #ddd,
+  border3: #aec3ff,
+  border4: #fefefe,
+  border5: #e0e0e0,
+  border6: #3f51b5,
+  border7: #757575,
+  border8: #ff4081,
+);
+
+@mixin var($property, $variable) {
+  #{$property}: map-get($var, $variable);
+  #{$property}: var(--#{$variable});
+}
+
+:root{
+  @each $property, $value in $var{
+    --#{$property}: #{$value};
+  }
+}
+// ============================================================================================================

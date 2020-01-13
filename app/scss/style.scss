@@ -1,0 +1,136 @@
+@import 'global';
+@import 'vars';
+@import 'fonts';
+
+// *******************************************************Upper Head
+
+.upper-head {
+  @include var(background-color, bg-header);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+  }
+
+  &__social-list {
+    display: flex;
+    margin: 0 -10px;
+
+    @include mqd(720px) {
+      display: none;
+    }
+  }
+
+  &__social-link {
+    padding: 0 10px;
+
+    .icon {
+      @include var(color, text3);
+      transition: color .3s;
+
+      &:hover {
+        @include var(color, text1);
+      }
+    }
+  }
+
+  &__form {
+    @include mqd(720px) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .btn {
+      border: none;
+      background-color: transparent;
+      @include var(font-size, m);
+      @include var(color, text3);
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0 15px 0 24px;
+      position: relative;
+      outline: none;
+      transition: color .3s;
+      letter-spacing: 1px;
+
+      &::before {
+        content: '\e908';
+        position: absolute;
+        left: 0;
+        bottom: 1px;
+        font-family: 'icomoon';
+        @include var(font-size, l);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 1px;
+        @include var(background-color, text3);
+
+        @include mqd(720px) {
+          display: none;
+        }
+      }
+
+      &:hover {
+        @include var(color, text1);
+      }
+
+      @include mqd(720px) {
+        order: 1;
+      }
+    }
+
+    .select {
+      margin-left: 15px;
+      padding: 0 16px 0 25px;
+      @include var(font-size, m);
+      @include var(color, text3);
+      text-transform: uppercase;
+      cursor: pointer;
+
+      @include mqd(720px) {
+        margin-left: 0;
+      }
+
+      &::before,
+      &::after {
+        position: absolute;
+        font-family: 'icomoon';
+        @include var(font-size, l);
+      }
+
+      &::before {
+        content: '\e90a';
+        left: 0;
+        bottom: 1px;
+      }
+
+      &::after {
+        content: '\e901';
+        right: 0;
+        top: 0;
+      }
+    }
+
+    .jq-selectbox {
+      top: 4px;
+
+      @include mqd(720px) {
+        top: 0;
+      }
+    }
+
+    .jq-selectbox__select-text {
+      width: auto;
+    }
+  }
+}
+
+// *******************************************************Upper Head Finished

@@ -5,9 +5,10 @@
 // *******************************************************Upper Head Start
 
 .upper-head {
+  z-index: 10;
   background-color: $bg-header;
 
-  @include mqd(500px) {
+  @include mqd(600px) {
     background-color: $bg-ms;
   }
 
@@ -148,20 +149,25 @@
 // *******************************************************Header Start
 
 .header {
-  background-color: rgba(#000, .95);
-  padding: 25px 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
-  @include mqd(500px) {
-    background-color: $bg-button1;
+  .container {
+    @include mqd(600px) {
+      background-color: $bg-button1;
+    }
   }
 
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 70px 0 25px;
   }
 
   &-logo {
+    z-index: 5;
 
     span {
       @include m700;
@@ -171,7 +177,7 @@
     }
   }
 
-  &-wrap{
+  &-wrap {
     display: flex;
     align-items: center;
   }
@@ -209,13 +215,13 @@
       }
     }
 
-    &:hover{
-      span{
+    &:hover {
+      span {
         background-color: $bg-button2;
       }
 
       &::before,
-      &::after{
+      &::after {
         background-color: $bg-button2;
       }
     }
@@ -251,10 +257,11 @@
     }
   }
 
-  &-menu{
-    @include mqd(1150px){
+  &-menu {
+    z-index: 5;
+
+    @include mqd(1150px) {
       position: absolute;
-      z-index: 5;
       left: 0;
       top: -100%;
       width: 100%;
@@ -264,11 +271,11 @@
       transition: top .3s;
     }
 
-    &.active{
+    &.active {
       top: 0;
     }
   }
-  
+
   &-list {
     display: flex;
 
@@ -279,7 +286,7 @@
       height: 100%;
     }
 
-    li + li{
+    li+li {
       margin-left: 30px;
 
       @include mqd(1150px) {
@@ -301,12 +308,12 @@
       }
 
       &:hover {
-        &::before{
+        &::before {
           transform: scale(1);
         }
       }
 
-      &::after{
+      &::after {
         content: '\e901';
         position: absolute;
         font-family: 'icomoon';
@@ -318,7 +325,7 @@
         }
       }
 
-      &::before{
+      &::before {
         content: '';
         position: absolute;
         width: 100%;
@@ -334,6 +341,7 @@
   &-icon {
     display: flex;
     margin-left: 40px;
+    z-index: 4;
 
     @include mqd(1150px) {
       margin-left: 24px;
@@ -343,43 +351,43 @@
       margin-left: 0;
     }
 
-    &__link{
+    &__link {
       font-size: $xl;
       color: $text1;
       transition: color .3s;
 
-      &:hover{
+      &:hover {
         color: $border8;
 
-        .cart-quantity{
+        .cart-quantity {
           color: $text1;
         }
       }
     }
 
     li:nth-child(1),
-    li:nth-child(2){
+    li:nth-child(2) {
       @include mqd(720px) {
         display: none;
       }
     }
 
-    li + li{
+    li+li {
       border-left: 1px solid $border7;
       margin-left: 12px;
       padding-left: 12px;
 
       @include mqd(720px) {
-        border-left:  none;
+        border-left: none;
         margin-left: 0;
         padding-left: 0;
       }
     }
 
-    .icon-local_grocery_storeshopping_cart{
+    .icon-local_grocery_storeshopping_cart {
       position: relative;
 
-      .cart-quantity{
+      .cart-quantity {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -392,6 +400,193 @@
         background-color: $bg-button2;
         right: -16px;
         top: -17px;
+      }
+    }
+  }
+}
+
+// *******************************************************Main Slider Start
+
+.slider {
+  background: 50%/cover no-repeat;
+  flex: 1 0 100%;
+  background-color: rgba($bg-header, .85);
+  background-blend-mode: multiply;
+  position: relative;
+
+  @include mqd(600px) {
+    display: none;
+  }
+
+  .slick-arrow{
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $xxx;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    color: $text1;
+  }
+
+  .slick-prev{
+    left: 40px;
+  }
+
+  .slick-next{
+    right: 40px;
+  }
+
+  .slick-dots{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    li + li{
+      margin-left: 30px;
+    }
+
+    .slick-active{
+      button{
+        background-color: rgba($bg-ms, 1);
+      }
+    }
+
+    button{
+      font-size: 0;
+      background-color: rgba($bg-ms, .5);
+      border: none;
+      width: 15px;
+      height: 15px;
+      outline: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  &-main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-content{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    padding: 0 20px;
+  }
+
+  &-subtitle{
+    @include m400;
+    color: $text1;
+    text-transform: uppercase;
+    font-size: $xxl;
+    margin-bottom: 15px;
+  }
+
+  &-title{
+    text-align: center;
+    @include m900;
+    font-size: $xxx;
+    color: $text1;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    max-width: 815px;
+    width: 100%;
+
+    @include mqd(920px) {
+      font-size: $xxl;
+    }
+  }
+
+  &-link{
+    @include m400;
+    color: $text1;
+    font-size: $xl;
+    background-color: rgba($bg-button1, .5);
+    box-shadow: 0px 17px 24px 0px rgba(48, 63, 159, 0.2);
+    border-radius: 25px;
+    padding: 15px 25px;
+    text-transform: uppercase;
+    margin-bottom: 70px;
+    outline: none;
+    transition: background-color .3s;
+
+    &:hover{
+      background-color: rgba($bg-button1, 1);
+    }
+  }
+
+  &-person{
+    text-align: center;
+
+    &__avatar{
+      margin: 0 auto 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
+
+    &__name{
+      @include m400;
+      color: $text1;
+      font-size: $s;
+      margin-bottom: 10px;
+    }
+
+    &__date {
+      @include m400;
+      color: $text4;
+      font-size: $es;
+      margin-bottom: 30px;
+    }
+
+    &__comment,
+    &__like{
+      @include m400;
+      color: $text4;
+      font-size: $es;
+      padding-left: 23px;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        font-family: 'icomoon';
+        font-size: $m;
+        color: $text4;
+        top: -3px;
+      }
+    }
+
+    &__comment{
+      margin-right: 30px;
+
+      &::before{
+        content: '\e90c';
+      }
+    }
+
+    &__like{
+
+      &::before {
+        content: '\e909';
       }
     }
   }

@@ -29,6 +29,7 @@ $(function () {
   });
 
   // -----------------------------------------------------------------Tabs
+  
   const tabs = document.querySelectorAll('[data-tab-target]')
   const tabContents = document.querySelectorAll('[data-tab-content]')
 
@@ -45,5 +46,16 @@ $(function () {
       target.classList.add('active')
     })
   })
+
+  // -----------------------------------------------------------------Spoiler
+
+  $('.widget-spoiler__title').click(function (event) {
+
+    if ($('.widget-spoiler').hasClass('one')) {
+      $('.widget-spoiler__title').not($(this)).removeClass('active');
+      $('.widget-spoiler__list').not($(this).next()).slideUp(300);
+    }
+    $(this).toggleClass('active').next().slideToggle(300);
+  });
 
 });

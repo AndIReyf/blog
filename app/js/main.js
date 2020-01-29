@@ -58,4 +58,10 @@ $(function () {
     $(this).toggleClass('active').next().slideToggle(300);
   });
 
+  // -----------------------------------------------------------------MixItUp
+  
+  if ($('#Container').length) {
+    var mixer = mixitup('#Container');
+  } else {}
+
 });

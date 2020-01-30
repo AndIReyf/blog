@@ -8,10 +8,6 @@
   z-index: 10;
   background-color: $bg-header;
 
-  @include mqd(600px) {
-    background-color: $bg-ms;
-  }
-
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -48,7 +44,7 @@
       width: 100%;
     }
 
-    .btn {
+    .sign-btn {
       @include m400;
       border: none;
       background-color: transparent;
@@ -153,9 +149,13 @@
   width: 100%;
   height: 100vh;
 
+  @include mqd(600px) {
+    height: auto;
+  }
+
   .container {
     @include mqd(600px) {
-      background-color: $bg-button1;
+      background-color: $bg-footer2;
     }
   }
 
@@ -263,9 +263,9 @@
     @include mqd(1150px) {
       position: absolute;
       left: 0;
-      top: -100%;
+      top: -700%;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       background-color: $bg-header;
       overflow: auto;
       transition: top .3s;
@@ -369,6 +369,12 @@
     li:nth-child(2) {
       @include mqd(720px) {
         display: none;
+      }
+    }
+
+    li:nth-child(3) {
+      @include mqd(720px) {
+        margin-right: 10px;
       }
     }
 
@@ -541,7 +547,7 @@
       font-size: $es;
       margin-bottom: 30px;
 
-      span{
+      span {
         margin-left: 10px;
       }
     }
@@ -603,7 +609,7 @@
     }
 
     @include mqd(600px) {
-      display: none;
+      margin-top: 81px;
     }
   }
 
@@ -624,6 +630,10 @@
     @include mqd(700px) {
       font-size: $xxl;
     }
+
+    @include mqd(600px) {
+      display: none;
+    }
   }
 
   &__list {
@@ -643,8 +653,16 @@
       width: 66.667%;
     }
 
+    @include mqd(600px) {
+      width: 100%;
+    }
+
     li {
       margin-left: 20px;
+
+      @include mqd(600px) {
+        margin-left: 0;
+      }
     }
   }
 
@@ -675,21 +693,26 @@
 // *******************************************************Page Content Start
 
 .page-content {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    right: -72%;
-    top: 0;
-    background-color: $bg;
-    z-index: -1;
-  }
+  overflow-x: hidden;
 
   &__wrapper {
     display: flex;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      right: -100%;
+      top: 0;
+      background-color: $bg;
+      z-index: -1;
+
+      @include mqd(1200px) {
+        display: none;
+      }
+    }
   }
 
   // ----------------------------------------------------------------Main
@@ -714,7 +737,11 @@
         font-size: $xl;
         padding: 10px;
         margin-left: 10px;
-        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
+        transition: box-shadow .3s;
+
+        &:hover {
+          box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
+        }
       }
     }
 
@@ -724,6 +751,15 @@
       border-radius: 5px;
       overflow: hidden;
       margin-bottom: 20px;
+      transition: box-shadow .3s;
+
+      &:hover {
+        box-shadow: 0px 1px 10px 0px rgba(205, 214, 222, 0.75);
+      }
+
+      .wrap {
+        width: 100%;
+      }
 
       &__media {
         background: 50%/cover no-repeat;
@@ -806,7 +842,7 @@
         }
 
         &-avatar {
-          width: 50px;
+          flex: 0 0 50px;
           height: 50px;
           overflow: hidden;
           border-radius: 50%;
@@ -845,9 +881,17 @@
 
       // -----------------------------------------------------------------Large
       &.large {
+        display: flex;
+        flex-direction: column;
+
         .main-box__media {
           padding-bottom: 51.86%;
           width: 100%;
+
+          @include mqd(780px) {
+            padding-bottom: 36%;
+            flex: 0 0 260px;
+          }
         }
 
         .main-box__media-link {
@@ -861,9 +905,17 @@
       &.small-horizontal {
         display: flex;
 
+        @include mqd(780px) {
+          flex-direction: column;
+        }
+
         .main-box__media {
           padding-bottom: 25%;
-          flex: 1 0 260px;
+          flex: 0 0 260px;
+
+          @include mqd(1200px) {
+            padding-bottom: 16%;
+          }
         }
 
         .main-box__media-link {
@@ -879,22 +931,50 @@
       display: flex;
       justify-content: space-between;
 
+      @include mqd(850px) {
+        flex-direction: column;
+      }
+
       .main-box.small-vertical {
         width: 260px;
+
+        @include mqd(850px) {
+          display: flex;
+          width: 100%;
+        }
+
+        @include mqd(780px) {
+          flex-direction: column;
+        }
 
         .main-box__media {
           padding-bottom: 0;
           height: 160px;
+
+          @include mqd(850px) {
+            padding-bottom: 23%;
+            flex: 0 0 260px;
+            height: auto;
+          }
         }
       }
 
       .main-box__info-title {
         font-size: $s;
+
+        @include mqd(850px) {
+          font-size: $l;
+        }
       }
 
       .main-box__info-text {
         font-size: $es;
         line-height: 20px;
+
+        @include mqd(850px) {
+          font-size: $m;
+          line-height: 26px;
+        }
       }
 
       .main-box__media-link {
@@ -905,17 +985,36 @@
     }
 
     // -----------------------------------------------------------------Medium
+
     .medium__wrap {
       display: flex;
       justify-content: space-between;
       margin-left: -20px;
 
+      @include mqd(780px) {
+        margin-left: 0;
+        flex-wrap: wrap;
+      }
+
       .main-box.medium {
         margin-left: 20px;
         flex-basis: calc(50% - 20px);
 
+        @include mqd(780px) {
+          width: 100%;
+          margin-left: 0;
+          flex-basis: initial;
+          display: flex;
+          flex-direction: column;
+        }
+
         .main-box__media {
           padding-bottom: 76%;
+
+          @include mqd(780px) {
+            padding-bottom: 36%;
+            flex: 0 0 260px;
+          }
         }
       }
     }
@@ -928,6 +1027,10 @@
     margin-left: 40px;
     background-color: $bg;
     border-top-left-radius: 5px;
+
+    @include mqd(1200px) {
+      display: none;
+    }
 
     .aside-content {
       padding: 23px 0 0 40px;
@@ -1134,7 +1237,7 @@
 
         &-list {
           display: flex;
-          border: 2px solid $border6;
+          border: 2px solid #ff4081;
           border-radius: 3px;
 
           .tab {
@@ -1247,6 +1350,11 @@
           background-color: $bg-main;
           border-radius: 3px;
           color: $text2;
+          transition: box-shadow .3s;
+
+          &:hover {
+            box-shadow: 0px 1px 2px 0px rgba(205, 214, 222, 0.75);
+          }
         }
       }
     }
@@ -1747,5 +1855,117 @@
     text-align: center;
     color: $text3;
     padding: 20px 0;
+  }
+}
+
+// *******************************************************Modal Popup Start
+
+#modal {
+  max-width: 730px;
+  padding-bottom: 100px;
+  padding-top: 90px;
+  margin: 0 auto;
+  background-color: $bg-footer2;
+  position: relative;
+
+  @include mqd(600px) {
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+
+  .mfp-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: $bg;
+  }
+
+  .login__wrapper {
+
+    .login__title {
+      text-align: center;
+      color: $text1;
+      margin-bottom: 40px;
+      font-size: $xxx;
+      text-transform: uppercase;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input {
+      border-radius: 5px;
+      width: 100%;
+      height: 43px;
+      margin-bottom: 8px;
+      border: none;
+      background-color: rgba($bg, .1);
+      display: block;
+      padding: 0 40px;
+      color: #fff;
+      font-size: $s;
+
+      &::placeholder {
+        color: $text1;
+        font-size: 14px;
+      }
+    }
+
+    .btn-submit {
+      margin-top: 15px;
+      margin-right: 5px;
+      padding: 15px 16px;
+      background-color: rgba($bg, .8);
+      width: 140px;
+      border: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-size: $m;
+      color: $text2;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color .3s;
+
+      @include mqd(450px) {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
+      &:hover {
+        background-color: rgba($bg, 1);
+      }
+    }
+
+    .create-acc {
+      border-radius: 5px;
+      color: $text1;
+      font-size: $l;
+      padding: 14px 0px 15px;
+      width: 250px;
+      background-color: rgba($bg, .1);
+      text-align: center;
+
+      @include mqd(450px) {
+        width: 100%;
+      }
+    }
+
+    .lost-pass {
+      display: block;
+      margin-top: 20px;
+      color: $text1;
+      font-size: $l;
+      transition: color .3s;
+
+      @include mqd(450px) {
+        text-align: center;
+      }
+
+      &:hover {
+        color: $bg-button1;
+      }
+    }
   }
 }

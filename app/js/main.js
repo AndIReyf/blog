@@ -29,7 +29,7 @@ $(function () {
   });
 
   // -----------------------------------------------------------------Tabs
-  
+
   const tabs = document.querySelectorAll('[data-tab-target]')
   const tabContents = document.querySelectorAll('[data-tab-content]')
 
@@ -59,7 +59,7 @@ $(function () {
   });
 
   // -----------------------------------------------------------------MixItUp
-  
+
   if ($('#Container').length) {
     var mixer = mixitup('#Container');
   } else {}
@@ -70,9 +70,6 @@ $(function () {
     type: 'inline',
     preloader: false,
     focus: '#name',
-
-    // When elemened is focused, some mobile browsers in some cases zoom in
-    // It looks not nice, so we disable it:
     callbacks: {
       beforeOpen: function () {
         if ($(window).width() < 700) {
@@ -84,4 +81,35 @@ $(function () {
     }
   });
 
+  // -----------------------------------------------------------------Small spoiler 
+
+  document.getElementById('Container').addEventListener('click', e => {
+    if (e.target.classList.contains('main-box__info-detail')) {
+      e.target.previousElementSibling.classList.toggle('active');
+    }
+  })
+
+  // -----------------------------------------------------------------Header menu spoiler
+  
+  const subList = document.querySelectorAll('.sub-list');
+  const li = document.querySelectorAll('.list li');
+  const body = document.querySelector('body');
+
+  li.forEach(li => {
+    li.addEventListener('click', function () {
+      subList.forEach(list => {
+        list.classList.remove('active');
+      })
+      this.classList.add('active');
+      this.children[1].classList.add('active');
+    })
+  })
+
+  body.addEventListener('click', e => {
+    if (!e.target.classList.contains('list__link')) {
+      subList.forEach(list => {
+        list.classList.remove('active');
+      })
+    }
+  })
 });
